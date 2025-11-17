@@ -1,35 +1,49 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+//Adds rounting to /login and /cities, city selection via props, better login for user
+import { useState } from "react";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import CollapsibleMenu from "./components/CollapsibleMenu";
+import CityList from "./components/CityList";
+import CityItinerary from "./components/CityItinerary";
+import LoginForm from "./components/LoginForm";
+import "./App.css";
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [selectedCity, setSelectedCity] = useState(null);
+
+  const handleLogin = (username) => {
+    alert(`Welcome, ${username}!`);
+  };
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.jsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Router>
+      <Header />
+      <CollapsibleMenu />
+
+      <Routes>
+        <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
+
+        <Route
+          path="/cities"
+          element={
+            <div className="app">
+              <h1>Cities to Choose</h1>
+              {!selectedCity ? (
+                <CityList onSelectCity={setSelectedCity} />
+              ) : (
+                <CityItinerary
+                  city={selectedCity}
+                  onBack={() => setSelectedCity(null)}
+                />
+              )}
+            </div>
+          }
+        />
+
+        {/*Can add more routes here if needed to make it very reusable */}
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;
