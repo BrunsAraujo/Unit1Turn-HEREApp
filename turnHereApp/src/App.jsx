@@ -1,23 +1,21 @@
-//adds routing with react-router-dom and login (hardcoded)
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Header from "./components/Header";
-import CollapsibleMenu2 from "./components/CollapsibleMenu2";
-import LoginForm from "./components/LoginForm";
+//City selection via props, test use for city selection logic - no log in
+import { useState } from "react";
+import CityList from "./components/CityList.jsx";
+import CityItinerary from "./components/CityItinerary.jsx";
 
 function App() {
-  const handleLogin = (username) => {
-    alert(`Welcome, ${username}!`);
-  };
+
+    const [selectedCity, setSelectedCity] = useState(null);
 
   return (
-    <Router>
-      <Header />
-      <CollapsibleMenu2 />
-      <Routes>
-        <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
-        {/* Add other routes here if needed */}
-      </Routes>
-    </Router>
+    <div className="app">
+      <h1>Cities to Choose</h1>
+      {!selectedCity ? (
+        <CityList onSelectCity={setSelectedCity} />
+      ) : (
+        <CityItinerary city={selectedCity} onBack={() => setSelectedCity(null)} />
+      )}
+    </div>
   );
 }
 
