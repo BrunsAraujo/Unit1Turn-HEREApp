@@ -1,25 +1,23 @@
-//rendering conditionally in single view/static. Using selectedCity state to toggle between CityList and CityItinerary
-import CollapsibleMenu from "./components/CollapsibleMenu.jsx";
-import Header from "./components/Header.jsx";
-
+//adds routing with react-router-dom and login (hardcoded)
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+import Header from "./components/Header";
+import CollapsibleMenu2 from "./components/CollapsibleMenu2";
+import LoginForm from "./components/LoginForm";
 
 function App() {
-    const [selectedCity, setSelectedCity] = useState(null);
+  const handleLogin = (username) => {
+    alert(`Welcome, ${username}!`);
+  };
 
   return (
-    <div className="app">
+    <Router>
       <Header />
-      <CollapsibleMenu/>
-      
-      {/* Other components go here */}
-   <h1>Weather Forecast</h1>
-      {!selectedCity ? (
-        <CityList onSelectCity={setSelectedCity} />
-      ) : (
-        <cityItinerary city={selectedCity} onBack={() => setSelectedCity(null)} />
-      )}   
-   
-    </div>
+      <CollapsibleMenu2 />
+      <Routes>
+        <Route path="/login" element={<LoginForm onLogin={handleLogin} />} />
+        {/* Add other routes here if needed */}
+      </Routes>
+    </Router>
   );
 }
 
