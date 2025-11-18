@@ -1,8 +1,8 @@
-//adds search citinerary3, search3, tripSaver for loggedin users(conditional rendering).
-// Login state tracked va loggedInUser. Search 3 inclines inline itinerary view
+//App7 version adds the about page and routes it
 import { useState } from "react";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import Header from "./components/Header";
+import About from "./components/About";
 import CollapsibleMenu from "./components/CollapsibleMenu";
 import CityList from "./components/CityList";
 import CityItinerary from "./components/CityItinerary";
@@ -33,6 +33,8 @@ function App() {
         </nav>
         <main div style={{ flex: 1 }}>
           <Routes>
+          <Route path="/about" element={<About />} />
+
             <Route
               path="/login"
               element={
@@ -47,7 +49,7 @@ function App() {
               path="/cities"
               element={
                 <div className="app">
-                  <h1>Cities:</h1>
+                  
                   {!selectedCity ? (
                     <CityList onSelectCity={setSelectedCity} />
                   ) : (
