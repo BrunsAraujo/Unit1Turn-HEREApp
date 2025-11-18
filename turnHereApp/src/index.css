@@ -1,3 +1,10 @@
+/*This file adds: 
+Defines font/light scheme
+Hover color change to button
+Bounce movement to car.png
+shake to "HERE"
+
+*/
 :root {
   font-family: system-ui, Avenir, Helvetica, Arial, sans-serif;
   line-height: 1.5;
@@ -65,4 +72,74 @@ button:focus-visible {
   button {
     background-color: #f9f9f9;
   }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.bounce {
+  animation: bounce 1s infinite;
+}
+.bounce-hover:hover {
+  display: inline-block;
+  animation: bounce 1s infinite;
+}
+
+@keyframes shake {
+  0% { transform: translateX(0); }
+  25% { transform: translateX(-5px); }
+  50% { transform: translateX(5px); }
+  75% { transform: translateX(-5px); }
+  100% { transform: translateX(0); }
+}
+
+.shake-hover:hover {
+  display: inline-block;
+  animation: shake 0.5s infinite;
+}
+
+body {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  min-width: 320px;
+  min-height: 100vh;
+  background-color: #f0f8ff;
+}
+
+.city-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center; /* horizontal centering */
+  justify-content: center; /* vertical centering if parent allows */
+  text-align: center;
+  padding: 40px;
+}
+
+.city-list h2 {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.city-list ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.city-list li {
+  margin: 10px 0;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: color 0.3s;
+}
+
+.city-list li:hover {
+  color: #007BFF;
 }
