@@ -15,15 +15,17 @@ function CityRandomizer() {
   };
 
   return (
-    <div style={{ textAlign: "center", padding: "40px" }}>
+    <div className="app" style={{ maxWidth: "800px", margin: "0 auto", padding: "40px", textAlign: "center" }}>
+      <h2>Random City Selector</h2>
       <button onClick={pickRandomCity}>Pick a Random City</button>
       {currentCity && (
         <div style={{ marginTop: "20px" }}>
-          <h2>{currentCity.name}</h2>
+          <h3>{currentCity.name}</h3>
           <p>{currentCity.summary}</p>
           <p>{currentCity.details}</p>
         </div>
       )}
+
     </div>
   );
 }
