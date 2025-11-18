@@ -10,6 +10,7 @@ import Search from "./components/Search.jsx";
 import LoginForm from "./components/LoginForm";
 import TripSaver from "./components/TripSaver";
 import Footer from "./components/Footer.jsx";
+import CityRandomizer from "./components/CityRandomizer";
 import "./App.css";
 import "./index.css";
 
@@ -66,6 +67,8 @@ function App() {
               element={<Search onSelectCity={setSelectedCity} />}
             />
             <Route path="/cities/:cityName" element={<CityItinerary />} />
+            <Route path="/CityRandomizer" element={<CityRandomizer />} />
+
           </Routes>
           </main>
         </div>
