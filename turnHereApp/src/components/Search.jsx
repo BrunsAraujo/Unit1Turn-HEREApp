@@ -2,7 +2,7 @@
 //shows itinerary inline using CotyItinerary3, handles selectedCity and query with state management. 
 import { useState } from "react";
 import { cityData } from "./cityData";
-import CityItinerary from "./CityItinerary";
+import CityItinerary from "./CityItinerary.jsx";
 import ReusableButton from "./ReusableButton";
 
 function Search({ onSelectCity }) {
@@ -73,9 +73,9 @@ function Search({ onSelectCity }) {
           </button>
         </>
       )}
-      <br>
+      <br />
         
-      </br>
+   
       <ReusableButton label="Back to Home Page" />
     </div>
   );
